@@ -1,38 +1,28 @@
-import React, { Component } from "react";
-import FlipMove from "react-flip-move";
+import React from "react";
 
-class TodoItems extends Component {
-   constructor(props) {
-      super(props);
-      
-      this.createTasks = this.createTasks.bind(this);
-   }
+const TodoItems = (props) => {
+   const { entries, delete: deleteTask } = props;
 
-   // creates a list item that can be clicked to delete
-   createTasks(item) {
-      return <li onClick={() => this.delete(item.key)}  key={item.key}>{item.text}</li>
-   }
-
-   delete(key) {
-      this.props.delete(key);
-   }
-
-   // Added flip move animation for transition of add/delete
-   render() {
-      var TodoEntries = this.props.entries;
-      var listItems = TodoEntries.map(this.createTasks);
-
+   const Task = ({ item }) => {
       return (
-         <div>
-            <ul className="theList">
-               <FlipMove duration={250} easing="ease-out">
-                  {listItems}
-               </FlipMove>
-            </ul>
+         <div key={item.key}>
+            <div onClick={() => deleteTask(item.key)} className="deleteButton">
+               x
+            </div>
+            <li>{item.text}</li>
          </div>
-         
       );
    }
-};
+
+   const listItems = entries.map((item) => <Task key={item.key} item={item} />);
+
+   return (
+      <div>
+         <ul className="theList">
+               {listItems}
+         </ul>
+      </div>
+   );
+}
 
 export default TodoItems;

@@ -16,10 +16,6 @@
   border-radius: 7px;
 }
 
-.TodoListMain .header button:hover {
-  background-color: #254D32;
-  border: 3px solid #254D32;
-}
 .TodoListMain .theList {
   list-style: none;
   padding-left: 0;
@@ -33,19 +29,23 @@
   margin-bottom: 15px;
   border-radius: 7px;
   list-style: none;
-}
-
-.TodoListMain .theList li {
-  color: #333;
-  background-color: rgba(255,255,255,.5);
-  padding: 15px;
-  font-size: 20px;
-  margin-bottom: 15px;
-  border-radius: 7px;
   transition: background-color .2s ease-out;
 }
- 
-.TodoListMain .theList li:hover {
+
+.deleteButton {
   background-color: #7C77B9;
   color: #FFF;
+  border-radius: 50px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+  left: 235px;
+  right: 5px;
+  top: 15px;
+  bottom:5px;
+  position: relative;
+  transition: background-color .2s ease-out;
 }
+
