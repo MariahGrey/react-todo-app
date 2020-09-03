@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const TodoItems = (props) => {
-   const { entries, delete: deleteTask } = props;
+const TodoItems = (Items) => {
+   const { entries, delete: deleteTask } = Items;
 
    const Task = ({ item }) => {
       return (
