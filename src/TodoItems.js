@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 
-const TodoItems = (Items) => {
-   const { entries, delete: deleteTask } = Items;
+   // Remove props to use context - how to change this section?
+   // const TodoItems = (props) => {
+
+   const TodoItems = () => {
+   const { entries, delete: deleteTask } = useContext(entries, deleteTask);
 
    const Task = ({ item }) => {
       return (
@@ -19,7 +22,7 @@ const TodoItems = (Items) => {
    return (
       <div>
          <ul className="theList">
-               {listItems}
+            {listItems}
          </ul>
       </div>
    );
