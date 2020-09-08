@@ -5,7 +5,7 @@ const CountItems = () => {
    const { items: entries } = useContext(TodoItemsContext);   
    const numberOfItems = entries.length;
 
-      if (numberOfItems != 0) {
+      if (numberOfItems !== 0) {
          return (
             <div className="countList">
                Items Remaining: {numberOfItems}
