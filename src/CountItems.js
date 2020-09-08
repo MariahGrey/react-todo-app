@@ -5,12 +5,16 @@ const CountItems = () => {
    const { items: entries } = useContext(TodoItemsContext);   
    const numberOfItems = entries.length;
 
-      if (numberOfItems !== 0) {
-         return (
-            <div className="countList">
-               Items Remaining: {numberOfItems}
-            </div>  
-         )} return (null)
+   // early return 
+   // if (numberOfItems === 0) return null;
+   
+   // useContext hook replaces this: <TodoItemsContext.Consumer>
+
+   return (
+         <div className="countList">
+            Items Remaining: {numberOfItems}
+         </div>  
+   ) 
 }
 
 export default CountItems;
