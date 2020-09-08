@@ -1,12 +1,14 @@
-import React, { useState, useRef, createContext, Provider } from "react";
+import React, { useState, useRef, createContext } from "react";
 import TodoItems from "./TodoItems"
 import "./TodoList.css";
+import CountItems from "./CountItems";
+
+export const TodoItemsContext = createContext({ items: [], deleteItem: () => null });
 
 const TodoList = () => {
    const [items, setItems] = useState([]);
-   const MyContext = createContext({ text: '', key: null });
    const _inputElement = useRef(null);
-
+   
    const addItem = (e) => {
       if (_inputElement.current.value !== '') {
          const newItem = {
@@ -19,13 +21,11 @@ const TodoList = () => {
          setItems(newItemsArray);
 
          console.log("added item: " + newItem.key);
-         console.log(MyContext);
          _inputElement.current.value = '';
       }
 
       e.preventDefault();
    }
-
 
    const deleteItem = (key) => {
       const filteredItems = items.filter((item) => {
@@ -35,19 +35,10 @@ const TodoList = () => {
 
       setItems(filteredItems);
    }
-
-   const value = {
-      actions: {
-         addItem,
-         deleteItem
-      },
-      item: {
-         text: '',
-         key: null
-      }
-   };
    
    return (
+
+      <TodoItemsContext.Provider value={{ items: items, deleteItem: deleteItem }}>
          <div className="TodoListMain">
             <h1>To Do List</h1>
                <div className="header">
@@ -56,10 +47,10 @@ const TodoList = () => {
                      <button type="submit">Add</button>
                   </form>
                </div>
-               <Provider value={{ entries: item, deleteItem }} >
-                  <TodoItems />
-               </Provider>    
+               <CountItems />
+               <TodoItems />
          </div>
+      </TodoItemsContext.Provider>
    )
 }
 

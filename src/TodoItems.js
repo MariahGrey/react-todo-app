@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-
-   // Remove props to use context - how to change this section?
-   // const TodoItems = (props) => {
+import React, { useContext } from 'react';
+import { TodoItemsContext } from './TodoList';
 
    const TodoItems = () => {
-   const { entries, delete: deleteTask } = useContext(entries, deleteTask);
+   const { items: entries, deleteItem: deleteTask } = useContext(TodoItemsContext);   
 
    const Task = ({ item }) => {
       return (
