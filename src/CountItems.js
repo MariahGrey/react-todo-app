@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TodoItemsContext } from './TodoList';
 
 const CountItems = () => {
-   return (
-      <div className="countList">
-         Items remaining: 3
-      </div>
-   )
+   const { items: entries } = useContext(TodoItemsContext);   
+   const numberOfItems = entries.length;
+
+      if (numberOfItems != 0) {
+         return (
+            <div className="countList">
+               Items Remaining: {numberOfItems}
+            </div>  
+         )} return (null)
 }
 
 export default CountItems;
-
