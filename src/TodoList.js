@@ -1,6 +1,6 @@
 import React, { useState, useRef, createContext } from "react";
 import TodoItems from "./TodoItems"
-import "./TodoList.css";
+import styled from 'styled-components'
 import CountItems from "./CountItems";
 
 export const TodoItemsContext = createContext({ items: [], deleteItem: () => null });
@@ -43,8 +43,8 @@ const TodoList = () => {
             <h1>To Do List</h1>
                <div className="header">
                   <form onSubmit={addItem}>
-                     <input ref={_inputElement} placeholder="Enter Task" />
-                     <button type="submit">Add</button>
+                     <TaskInput ref={_inputElement} placeholder="Enter Task" />
+                     <AddButton type="submit">Add</AddButton>
                   </form>
                </div>
                <CountItems />
@@ -55,3 +55,21 @@ const TodoList = () => {
 }
 
 export default TodoList;
+
+const TaskInput= styled.input`
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid #FFF;
+  border-radius: 7px;
+  width: 165px;
+`
+const AddButton = styled.button`
+   padding: 10px;
+   font-size: 20px;
+   margin: 10px;
+   margin-right: 0px;
+   background-color: #7C77B9;
+   color: #FFF;
+   border: 2px solid #7C77B9;
+   border-radius: 7px;
+`
